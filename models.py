@@ -13,6 +13,7 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 
 import xgboost as xgb
 
@@ -59,6 +60,13 @@ class Models():
         model = RandomForestClassifier(n_estimators=50, oob_score=True, n_jobs=1, random_state=0, max_features=None, min_samples_leaf=30)
         model.fit(self.X, self.y)
         return model
+
+    # Support Vector Machine Model
+    def build_model_SVC(self):
+        model = SVC(kernel='linear', C=0.025, random_state=0)
+        model.fit(self.X, self.y)
+        return model
+
 
     # Extreme Gradient Boosting Model
     def build_model_XGBoost(self):
