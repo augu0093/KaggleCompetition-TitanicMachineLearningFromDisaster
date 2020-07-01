@@ -14,11 +14,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
-from xgboost import XGBClassifier
+import xgboost as xgb
 
 class Models():
-    """Class containing all (sklearn-built) models"""
+    """Class containing all classification models"""
 
+    # Init
     def __init__(self, agenan="median"):
         self.X, self.y = dataLoader(test=False, optimize_set=False, ageNAN=agenan)
         self.y = np.ravel(self.y)
@@ -61,6 +62,19 @@ class Models():
 
     # Extreme Gradient Boosting Model
     def build_model_XGBoost(self):
-        model = XGBClassifier()
-        model.fit(self.X, self.y)
+        # Redefining data for use in XGB
+        xgb_train_data = xgb.DMatrix(self.X.to_numpy(), label=self.y)
+        # Setting model parameters
+        # param = {
+        #     'eta': 0.3,  # Learning rate
+        #     'max_depth': 3,
+        #     'objective': 'multi:softprob',
+        #     'num_class': 3}
+        # Train model
+        model = xgb.XGBClassifier(eta=0.3, max_depth=3, objective='multi:softprob', num_class=3, steps=20)
+        model.train(xgb_train_data)
         return model
+
+
+
+

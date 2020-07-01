@@ -6,7 +6,7 @@ Predictions are made here.
 from dataLoader import dataLoader
 from models import Models
 from dataLoader import csvSaver
-
+import xgboost as xgb
 
 
 
@@ -38,8 +38,16 @@ if __name__ == '__main__':
     csvSaver(predictions=SGD_predictions, type="SGD")
 
 
-    # print(list(logistic_predictions))
-    # print(len(logistic_predictions))
+
+
+
+
+    # XGBoost model predictions
+    XGB_model = Models.build_model_XGBoost()
+    XGB_testData = xgb.DMatrix(testData.to_numpy())
+    XGB_predictions = XGB_model.predict(XGB_testData)
+    # Saving predictions
+    csvSaver(predictions=XGB_predictions, type="XGBoost")
 
 
 
