@@ -19,11 +19,24 @@ if __name__ == '__main__':
     Models = Models(agenan='median')
 
 
-    # Logistic regression Model
+    # Logistic Regression model predictions
     logisticModel = Models.build_model_logisticReg()
     logistic_predictions = logisticModel.predict(testData)
     # Saving predictions
-    csvSaver(predictions=logistic_predictions, type="Logistic")
+    csvSaver(predictions=logistic_predictions, type="logistic")
+
+    # Naive Bayes model predictions
+    naiveBayes_model = Models.build_model_naiveBayes()
+    naiveBayes_predictions = naiveBayes_model.predict(testData)
+    # Saving predictions
+    csvSaver(predictions=naiveBayes_predictions, type="naiveBayes")
+
+    # Stochastic Gradient Descent model predictions
+    SGD_model = Models.build_model_SGD()
+    SGD_predictions = SGD_model.predict(testData)
+    # Saving predictions
+    csvSaver(predictions=SGD_predictions, type="SGD")
+
 
     # print(list(logistic_predictions))
     # print(len(logistic_predictions))

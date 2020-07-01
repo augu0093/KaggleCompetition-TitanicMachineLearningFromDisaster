@@ -5,8 +5,10 @@ Import data function.
 
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 
-def dataLoader(test=False, return_X_y=True, ageNAN="median"):
+
+def dataLoader(test=False, optimize_set=False, ageNAN="median"):
 
     # Loading both training and test set
 
@@ -52,18 +54,20 @@ def dataLoader(test=False, return_X_y=True, ageNAN="median"):
         label_df[col] = labelEncoder.fit_transform(df_all[col])
     df_all = label_df
 
-    # Now the two datasets are separated again
+    # Now the two data sets are separated again
     X = df_all[:num_train_rows]
     df_test = df_all[-num_test_rows:]
 
 
-    # Either the test set is returned
+    # The test set is returned
     if test:
         return df_test
 
-    # Else training set is, return data and target values separately
+    # Training set is returned, either split or not
     elif not test:
-        if return_X_y:
+        if optimize_set:
+            return train_test_split(X, y, test_size=0.2, random_state=0)
+        else:
             return X, y
 
 
