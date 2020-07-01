@@ -19,7 +19,7 @@ Obviously this approach underperforms, SDG is usually good with large amounts of
 
 
 
-
+- XGBoost : 0.775 accuracy.
 
 
 Final rank on Kaggle:

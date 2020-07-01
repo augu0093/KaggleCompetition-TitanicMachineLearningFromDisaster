@@ -45,7 +45,7 @@ if __name__ == '__main__':
     # XGBoost model predictions
     XGB_model = Models.build_model_XGBoost()
     XGB_testData = xgb.DMatrix(testData.to_numpy())
-    XGB_predictions = XGB_model.predict(XGB_testData)
+    XGB_predictions = XGB_model.predict(testData.to_numpy())
     # Saving predictions
     csvSaver(predictions=XGB_predictions, type="XGBoost")
 

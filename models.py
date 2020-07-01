@@ -71,8 +71,9 @@ class Models():
         #     'objective': 'multi:softprob',
         #     'num_class': 3}
         # Train model
-        model = xgb.XGBClassifier(eta=0.3, max_depth=3, objective='multi:softprob', num_class=3, steps=20)
-        model.train(xgb_train_data)
+        model = xgb.sklearn.XGBClassifier(eta=0.3, max_depth=3, objective='multi:softprob', num_class=3, steps=20)
+        model.fit(self.X.to_numpy(), self.y)
+        # model.train(xgb_train_data)
         return model
 
 
