@@ -38,7 +38,11 @@ if __name__ == '__main__':
     csvSaver(predictions=SGD_predictions, type="SGD")
 
 
-
+    # Random Forest model predictions
+    RF_model = Models.build_model_RF()
+    RF_predictions = RF_model.predict(testData)
+    # Saving predictions
+    csvSaver(predictions=RF_predictions, type="RF")
 
 
 

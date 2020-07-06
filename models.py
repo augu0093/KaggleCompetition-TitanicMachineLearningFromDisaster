@@ -56,8 +56,9 @@ class Models():
         return model
 
     # Random Forest Model
-    def build_model_randomForest(self):
-        model = RandomForestClassifier(n_estimators=50, oob_score=True, n_jobs=1, random_state=0, max_features=None, min_samples_leaf=30)
+    def build_model_RF(self):
+        # model = RandomForestClassifier(n_estimators=50, oob_score=True, n_jobs=1, random_state=0, max_features=None, min_samples_leaf=30)
+        model = RandomForestClassifier(oob_score=True)
         model.fit(self.X, self.y)
         return model
 
