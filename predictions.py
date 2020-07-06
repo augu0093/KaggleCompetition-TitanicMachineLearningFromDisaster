@@ -38,6 +38,12 @@ if __name__ == '__main__':
     csvSaver(predictions=SGD_predictions, type="SGD")
 
     # Decision model predictions
+    KNN_model = Models.build_model_KNN()
+    KNN_predictions = KNN_model.predict(testData)
+    # Saving predictions
+    csvSaver(predictions=KNN_predictions, type="KNN")
+
+    # Decision model predictions
     DT_model = Models.build_model_DT()
     DT_predictions = DT_model.predict(testData)
     # Saving predictions
@@ -52,6 +58,11 @@ if __name__ == '__main__':
     csvSaver(predictions=RF_predictions, type="RF")
     csvSaver(predictions=RF_tuned_predictions, type="RF_tuned")
 
+    # Decision model predictions
+    SVC_model = Models.build_model_SVC()
+    SVC_predictions = SVC_model.predict(testData)
+    # Saving predictions
+    csvSaver(predictions=SVC_predictions, type="SVC")
 
     # XGBoost model predictions
     XGB_model = Models.build_model_XGB()

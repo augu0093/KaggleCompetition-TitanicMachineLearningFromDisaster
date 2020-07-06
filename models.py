@@ -17,9 +17,9 @@ from sklearn.svm import SVC
 
 import xgboost as xgb
 
-class Models():
-    """Class containing all classification models"""
 
+class Models:
+    """Class containing all classification models"""
     # Init
     def __init__(self, agenan="median"):
         self.X, self.y = dataLoader(test=False, optimize_set=False, ageNAN=agenan)
@@ -60,7 +60,6 @@ class Models():
         model = RandomForestClassifier(oob_score=True, random_state=0)
         model.fit(self.X, self.y)
         return model
-
     # Random Forest Model, Bayesian Optimization tuned
     def build_optimized_RF(self):
         model = RandomForestClassifier(n_estimators=146, max_depth=20, max_features='sqrt', criterion='entropy',

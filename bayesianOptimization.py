@@ -1,5 +1,5 @@
 """
-This script tunes hyper-parameter settings of some of the utilized classification models.
+This script tunes hyper-parameters of the Random Forest model.
 @AugustSemrau
 """
 
@@ -35,6 +35,7 @@ domain_RF = [{'name': 'n_estimators', 'type': 'discrete', 'domain': n_estimators
           {'name': 'max_features', 'type': 'categorical', 'domain': max_features},
           {'name': 'criterion', 'type': 'categorical', 'domain': criterion}]
 
+
 # Defining objective function for RF which is the oob.score, which we want to maximize
 def objective_function(domain):
     # The two paramteters max_features and criterion are converted from binary 0/1 to labels log2/sqrt and gini/entropy
@@ -56,7 +57,6 @@ def objective_function(domain):
     else:
         crit = 'entropy'
 
-
     # Create the RF model
     model = RandomForestClassifier(n_estimators=int(params[0]),
                                    max_depth=int(params[1]),
@@ -70,14 +70,12 @@ def objective_function(domain):
     # print(model.oob_score_)
     return - model.oob_score_
 
+
 # Random Forest Model for optimization
 def build_optimized_RF(X, y, d0, d1, d2, d3):
     model = RandomForestClassifier(n_estimators=d0, max_depth=d1, max_features=d2, criterion=d3, oob_score=True, random_state=0)
     model.fit(X, y)
     return model
-
-
-
 
 
 if __name__ == '__main__':

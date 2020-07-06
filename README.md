@@ -25,19 +25,19 @@ Below is a short description of each model used and which accuracy they yielded.
 - Naive Bayes, no tuning: 0.718 accuracy.
 
 - Stochastic Gradient Descent, squared_loss: 0.373 accuracy.
-Obviously this approach underperforms, SDG is usually good with large amounts of data, which is not the case here.
+This is obviously faulty, worst performance is 0.5 due to the nature of binary classification.
+The explanation in this case is that SDG guesses a lot of 1'es (alive) while there are an overload of 0'es (diseased).
 
-- K-Nearest-Neighbors
+- K-Nearest-Neighbors, n=10: 0.634 accuracy
 
 - Decision Tree, no tuning: 0.722 accuracy.
 
 - Random Forest, no tuning: 0.766 accuracy.  
-Random Forest, tuned: 0.778 accuracy.
+Random Forest, BO tuned: 0.778 accuracy. <- Best.
+
+- Support Vector Machine, no tuning: 0.773 accuracy.
+
+- XGBoost, no tuning: 0.775 accuracy.
 
 
-- Support Vector Machine
-
-- XGBoost : 0.775 accuracy.
-
-
-Final rank on Kaggle:
+Final rank on Kaggle: 7770, top 30 %.
