@@ -26,13 +26,13 @@ class Models():
         self.y = np.ravel(self.y)
 
     # Logistic Regression Model
-    def build_model_logisticReg(self):
+    def build_model_LR(self):
         model = LogisticRegression(random_state=0)
         model.fit(self.X, self.y)
         return model
 
     # Naive Bayes Model
-    def build_model_naiveBayes(self):
+    def build_model_NB(self):
         model = GaussianNB()
         model.fit(self.X, self.y)
         return model
@@ -50,15 +50,21 @@ class Models():
         return model
 
     # Decision Tree Model
-    def build_model_decisionTree(self):
-        model = DecisionTreeClassifier(max_depth=10, random_state=0, max_features=None, min_samples_leaf=15)
+    def build_model_DT(self):
+        model = DecisionTreeClassifier(random_state=0)
         model.fit(self.X, self.y)
         return model
 
-    # Random Forest Model
+    # Random Forest Model, no tuning
     def build_model_RF(self):
-        # model = RandomForestClassifier(n_estimators=50, oob_score=True, n_jobs=1, random_state=0, max_features=None, min_samples_leaf=30)
-        model = RandomForestClassifier(oob_score=True)
+        model = RandomForestClassifier(oob_score=True, random_state=0)
+        model.fit(self.X, self.y)
+        return model
+
+    # Random Forest Model, Bayesian Optimization tuned
+    def build_optimized_RF(self):
+        model = RandomForestClassifier(n_estimators=146, max_depth=20, max_features='sqrt', criterion='entropy',
+                                       oob_score=True, random_state=0)
         model.fit(self.X, self.y)
         return model
 
@@ -70,7 +76,7 @@ class Models():
 
 
     # Extreme Gradient Boosting Model
-    def build_model_XGBoost(self):
+    def build_model_XGB(self):
         # Redefining data for use in XGB
         xgb_train_data = xgb.DMatrix(self.X.to_numpy(), label=self.y)
         # Setting model parameters

@@ -29,9 +29,10 @@ Obviously this approach underperforms, SDG is usually good with large amounts of
 
 - K-Nearest-Neighbors
 
-- Descision Tree
+- Decision Tree, no tuning: 0.722 accuracy.
 
-- Random Forest, no tuning: 0.766 accuracy.
+- Random Forest, no tuning: 0.766 accuracy.  
+Random Forest, tuned: 0.778 accuracy.
 
 
 - Support Vector Machine

@@ -20,13 +20,13 @@ if __name__ == '__main__':
 
 
     # Logistic Regression model predictions
-    logisticModel = Models.build_model_logisticReg()
+    logisticModel = Models.build_model_LR()
     logistic_predictions = logisticModel.predict(testData)
     # Saving predictions
     csvSaver(predictions=logistic_predictions, type="logistic")
 
     # Naive Bayes model predictions
-    naiveBayes_model = Models.build_model_naiveBayes()
+    naiveBayes_model = Models.build_model_NB()
     naiveBayes_predictions = naiveBayes_model.predict(testData)
     # Saving predictions
     csvSaver(predictions=naiveBayes_predictions, type="naiveBayes")
@@ -37,17 +37,24 @@ if __name__ == '__main__':
     # Saving predictions
     csvSaver(predictions=SGD_predictions, type="SGD")
 
+    # Decision model predictions
+    DT_model = Models.build_model_DT()
+    DT_predictions = DT_model.predict(testData)
+    # Saving predictions
+    csvSaver(predictions=DT_predictions, type="DT")
 
-    # Random Forest model predictions
+    # Default and tuned Random Forest model predictions
     RF_model = Models.build_model_RF()
+    RF_tuned = Models.build_optimized_RF()
     RF_predictions = RF_model.predict(testData)
+    RF_tuned_predictions = RF_tuned.predict(testData)
     # Saving predictions
     csvSaver(predictions=RF_predictions, type="RF")
-
+    csvSaver(predictions=RF_tuned_predictions, type="RF_tuned")
 
 
     # XGBoost model predictions
-    XGB_model = Models.build_model_XGBoost()
+    XGB_model = Models.build_model_XGB()
     XGB_testData = xgb.DMatrix(testData.to_numpy())
     XGB_predictions = XGB_model.predict(testData.to_numpy())
     # Saving predictions
