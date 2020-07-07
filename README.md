@@ -22,6 +22,9 @@ The following scripts are used for completing the competition.
 ### Models and their Accuracy
 Below is a short description of each model used and which accuracy they yielded.
 
+- Random Forest, no tuning: 0.766 accuracy.  
+Random Forest, BO tuned: 0.778 accuracy. <- Best.
+
 - Baseline (guessing): ~0.5 accuracy.
 
 - Logistic Regression, no tuning: 0.758 accuracy.
@@ -36,9 +39,6 @@ The explanation in this case seems that SDG guesses a lot of 1'es (alive) while 
 I tried to find optimal number of K but they were all equally bad.
 
 - Decision Tree, no tuning: 0.722 accuracy.
-
-- Random Forest, no tuning: 0.766 accuracy.  
-Random Forest, BO tuned: 0.778 accuracy. <- Best.
 
 - Support Vector Machine, no tuning: 0.773 accuracy.
 
