@@ -16,6 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 
 import xgboost as xgb
+from xgboost import XGBClassifier
 
 
 class Models:
@@ -23,11 +24,11 @@ class Models:
     # Init
     def __init__(self, agenan="median"):
         self.X, self.y = dataLoader(test=False, optimize_set=False, ageNAN=agenan)
-        self.y = np.ravel(self.y)
+        self.y = self.y.values.ravel()
 
     # Logistic Regression Model
     def build_model_LR(self):
-        model = LogisticRegression(random_state=0)
+        model = LogisticRegression(max_iter=1000, random_state=0)
         model.fit(self.X, self.y)
         return model
 
@@ -64,6 +65,8 @@ class Models:
     def build_optimized_RF(self):
         model = RandomForestClassifier(n_estimators=146, max_depth=20, max_features='sqrt', criterion='entropy',
                                        oob_score=True, random_state=0)
+        # model = RandomForestClassifier(n_estimators=141, max_depth=10, max_features='sqrt', criterion='entropy',
+        #                                oob_score=True, random_state=0)
         model.fit(self.X, self.y)
         return model
 
@@ -76,20 +79,14 @@ class Models:
 
     # Extreme Gradient Boosting Model
     def build_model_XGB(self):
-        # Redefining data for use in XGB
-        xgb_train_data = xgb.DMatrix(self.X.to_numpy(), label=self.y)
-        # Setting model parameters
-        # param = {
-        #     'eta': 0.3,  # Learning rate
-        #     'max_depth': 3,
-        #     'objective': 'multi:softprob',
-        #     'num_class': 3}
-        # Train model
-        model = xgb.sklearn.XGBClassifier(eta=0.3, max_depth=3, objective='multi:softprob', num_class=3, steps=20)
-        model.fit(self.X.to_numpy(), self.y)
-        # model.train(xgb_train_data)
+        model = XGBClassifier()
+        model.fit(self.X, self.y)
         return model
-
-
-
-
+    # # Setting model parameters
+    # # param = {
+    # #     'eta': 0.3,  # Learning rate
+    # #     'max_depth': 3,
+    # #     'objective': 'multi:softprob',
+    # #     'num_class': 3}
+    # # Train model
+    # model = xgb.sklearn.XGBClassifier(eta=0.3, max_depth=3, objective='multi:softprob', num_class=3, steps=20)

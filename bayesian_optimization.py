@@ -110,6 +110,3 @@ if __name__ == '__main__':
     print('Default RF model test accuracy', optimizedRF.score(X_val, y_val))
 
 
-
-
-#The best parameters obtained: n_estimators=92, max_depth=40, max_features=log2, criterion=gini

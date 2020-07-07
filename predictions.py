@@ -66,8 +66,7 @@ if __name__ == '__main__':
 
     # XGBoost model predictions
     XGB_model = Models.build_model_XGB()
-    XGB_testData = xgb.DMatrix(testData.to_numpy())
-    XGB_predictions = XGB_model.predict(testData.to_numpy())
+    XGB_predictions = XGB_model.predict(testData)
     # Saving predictions
     csvSaver(predictions=XGB_predictions, type="XGBoost")
 
