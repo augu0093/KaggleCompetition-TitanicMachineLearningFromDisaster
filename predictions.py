@@ -3,9 +3,9 @@ Predictions are made here.
 @AugustSemrau
 """
 
-from dataLoader import dataLoader
+from data_loader import dataLoader
 from models import Models
-from dataLoader import csvSaver
+from data_loader import csvSaver
 import xgboost as xgb
 
 

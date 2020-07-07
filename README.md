@@ -1,8 +1,8 @@
-# SciKit-Learn classification and Bayesian Optimization
+# SciKit-Learn classification models and Optimization methods
 By August Semrau Andersen.
 
-This project is an entry in to the Kaggle competition 'Titanic: Machine Learning from Disaster'.  
-The goal of the competition is to predict which passengers of the Titanic survived the infamous disaster.
+This project is an entry into the Kaggle competition 'Titanic: Machine Learning from Disaster'.  
+The goal of the competition is a binary classification task of predicting which passengers of the Titanic survived the infamous disaster.
 
 The intent with the project is to display proficiency in using the SciKit-Learn package for a classification task.  
 Further ability in tuning of models using Bayesian Optimization is also displayed.
@@ -11,24 +11,29 @@ Further ability in tuning of models using Bayesian Optimization is also displaye
 ### Scripts
 The following scripts are used for completing the competition.
  
-1. dataLoader.py which loads .csv data and uses sklearn for preprocessing. 
+1. dataLoader.py which loads .csv data and uses scikit-learn (sklearn) for preprocessing. 
 2. models.py contains some non-tuned sklearn classification models, some tuned models and an XGBoost classifier.
 3. predictions.py is used for printing predictions to .csv format for entry in Kaggle-competition.
-4. bayesianOptimization.py has been used for optimizing some of the below mentioned classification-models.
+4. bayesian_optimization.py has been used for tuning hyper-parameters of the Random Forest classifier using Bayesian Optimization strategy.
+5. k_fold_cross_validation.py uses k-fold cross-validation to find the optimal number og neighbors in the K-Nearest-Neighbors model.
+
 
 
 ### Models and their Accuracy
 Below is a short description of each model used and which accuracy they yielded.
+
+- Baseline (guessing): ~0.5 accuracy.
 
 - Logistic Regression, no tuning: 0.737 accuracy.
 
 - Naive Bayes, no tuning: 0.718 accuracy.
 
 - Stochastic Gradient Descent, squared_loss: 0.373 accuracy.
-This is obviously faulty, worst performance is 0.5 due to the nature of binary classification.
-The explanation in this case is that SDG guesses a lot of 1'es (alive) while there are an overload of 0'es (diseased).
+This is obviously faulty.
+The explanation in this case seems that SDG guesses a lot of 1'es (alive) while there are an overload of 0'es (diseased).
 
-- K-Nearest-Neighbors, n=10: 0.634 accuracy
+- K-Nearest-Neighbors, k=10: 0.634 accuracy  
+I tried to find optimal number of K but they were all equally bad.
 
 - Decision Tree, no tuning: 0.722 accuracy.
 

@@ -4,7 +4,7 @@ Building predictive model on regression principles.
 """
 import numpy as np
 
-from dataLoader import dataLoader
+from data_loader import dataLoader
 
 # SciKit-Learn
 from sklearn.linear_model import LogisticRegression

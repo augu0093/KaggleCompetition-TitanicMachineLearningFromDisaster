@@ -3,7 +3,7 @@ This script tunes hyper-parameters of the Random Forest model.
 @AugustSemrau
 """
 
-from dataLoader import dataLoader
+from data_loader import dataLoader
 from sklearn.ensemble import RandomForestClassifier
 import GPyOpt
 import numpy as np
@@ -90,9 +90,9 @@ if __name__ == '__main__':
 
     # Performing Bayesian optimization to optimize RF model parameters
     # Acquisition functions can be MPI, EI or LCB
-    opt = GPyOpt.methods.BayesianOptimization(f=objective_function, domain=domain_RF, acquisition_type='EI')
+    opt = GPyOpt.methods.BayesianOptimization(f=objective_function, domain=domain_RF, acquisition_type='MPI')
     opt.acquisition.exploration_weight = 0.5
-    opt.run_optimization(max_iter=15)
+    opt.run_optimization(max_iter=30)
     domain_best = opt.X[np.argmin(opt.Y)]
 
     # Printing best model parameters
@@ -112,4 +112,4 @@ if __name__ == '__main__':
 
 
 
-
+#The best parameters obtained: n_estimators=92, max_depth=40, max_features=log2, criterion=gini
