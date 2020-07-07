@@ -2,7 +2,8 @@
 By August Semrau Andersen.
 
 This project is an entry into the Kaggle competition 'Titanic: Machine Learning from Disaster'.  
-The goal of the competition is a binary classification task of predicting which passengers of the Titanic survived the infamous disaster.
+https://www.kaggle.com/c/titanic  
+The competition consists of a binary classification task of predicting which passengers of the Titanic survived the infamous disaster.
 
 The intent with the project is to display proficiency in using the SciKit-Learn package for a classification task.  
 Further ability in tuning of models using Bayesian Optimization is also displayed.
