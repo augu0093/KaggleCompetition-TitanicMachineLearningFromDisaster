@@ -47,3 +47,11 @@ I tried to find optimal number of K but they were all equally bad.
 
 
 Final rank on Kaggle: 7770, top 30 %.
+
+### TODO
+I want to get into top 10%, as to why the next two steps will be:  
+
+- Comprehensive Feature Engeneering of the data.
+- Ensemble models for potential big boost in performance.
+
+#### Thank you for reading, I hope it was interesting
