@@ -79,7 +79,7 @@ class Models:
 
     # Extreme Gradient Boosting Model
     def build_model_XGB(self):
-        model = XGBClassifier()
+        model = XGBClassifier(n_estimators=1000, learning_rate=0.5)
         model.fit(self.X, self.y)
         return model
     # # Setting model parameters

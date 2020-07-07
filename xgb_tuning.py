@@ -20,7 +20,15 @@ if __name__ == '__main__':
     default_predictions = defualt_xgb.predict(X_val)
     print('Default XGB model test accuracy', accuracy_score(y_val, default_predictions))
 
-
+    # Using early_stopping_rounds to determine best n_estimators number
+    tuned_xgb = XGBClassifier(n_estimators=10, learning_rate=0.5)
+    tuned_xgb.fit(X_train, y_train, early_stopping_rounds=5, eval_set=[(X_val, y_val)], verbose=False)
+    tuned_params = tuned_xgb.get_params()
+    print('')
+    print('Best n_estimators', tuned_params['n_estimators'])
+    print('Best learning rate', tuned_params['learning_rate'])
+    tuned_predictions = tuned_xgb.predict(X_val)
+    print('Tuned XGB model test accuracy', accuracy_score(y_val, tuned_predictions))
 
 
 
