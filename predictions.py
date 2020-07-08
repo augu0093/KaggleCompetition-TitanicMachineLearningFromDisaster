@@ -5,7 +5,7 @@ Predictions are made here.
 
 from data_loader import dataLoader
 from models import Models
-from data_loader import csvSaver
+from data_loader import csv_saver
 import xgboost as xgb
 
 
@@ -23,31 +23,31 @@ if __name__ == '__main__':
     logisticModel = Models.build_model_LR()
     logistic_predictions = logisticModel.predict(testData)
     # Saving predictions
-    csvSaver(predictions=logistic_predictions, type="logistic")
+    csv_saver(predictions=logistic_predictions, type="logistic")
 
     # Naive Bayes model predictions
     naiveBayes_model = Models.build_model_NB()
     naiveBayes_predictions = naiveBayes_model.predict(testData)
     # Saving predictions
-    csvSaver(predictions=naiveBayes_predictions, type="naiveBayes")
+    csv_saver(predictions=naiveBayes_predictions, type="naiveBayes")
 
     # Stochastic Gradient Descent model predictions
     SGD_model = Models.build_model_SGD()
     SGD_predictions = SGD_model.predict(testData)
     # Saving predictions
-    csvSaver(predictions=SGD_predictions, type="SGD")
+    csv_saver(predictions=SGD_predictions, type="SGD")
 
     # Decision model predictions
     KNN_model = Models.build_model_KNN()
     KNN_predictions = KNN_model.predict(testData)
     # Saving predictions
-    csvSaver(predictions=KNN_predictions, type="KNN")
+    csv_saver(predictions=KNN_predictions, type="KNN")
 
     # Decision model predictions
     DT_model = Models.build_model_DT()
     DT_predictions = DT_model.predict(testData)
     # Saving predictions
-    csvSaver(predictions=DT_predictions, type="DT")
+    csv_saver(predictions=DT_predictions, type="DT")
 
     # Default and tuned Random Forest model predictions
     RF_model = Models.build_model_RF()
@@ -55,20 +55,20 @@ if __name__ == '__main__':
     RF_predictions = RF_model.predict(testData)
     RF_tuned_predictions = RF_tuned.predict(testData)
     # Saving predictions
-    csvSaver(predictions=RF_predictions, type="RF")
-    csvSaver(predictions=RF_tuned_predictions, type="RF_tuned")
+    csv_saver(predictions=RF_predictions, type="RF")
+    csv_saver(predictions=RF_tuned_predictions, type="RF_tuned")
 
     # Decision model predictions
     SVC_model = Models.build_model_SVC()
     SVC_predictions = SVC_model.predict(testData)
     # Saving predictions
-    csvSaver(predictions=SVC_predictions, type="SVC")
+    csv_saver(predictions=SVC_predictions, type="SVC")
 
     # XGBoost model predictions
     XGB_model = Models.build_model_XGB()
     XGB_predictions = XGB_model.predict(testData)
     # Saving predictions
-    csvSaver(predictions=XGB_predictions, type="XGBoost")
+    csv_saver(predictions=XGB_predictions, type="XGBoost")
 
 
 

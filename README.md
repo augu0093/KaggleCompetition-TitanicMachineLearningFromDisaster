@@ -12,21 +12,21 @@ Further ability in tuning of models using Bayesian Optimization is also displaye
 ### Scripts
 The following scripts are used for completing the competition.
  
-1. dataLoader.py which loads .csv data and uses scikit-learn (sklearn) for preprocessing. 
-2. models.py contains some non-tuned sklearn classification models, some tuned models and an XGBoost classifier.
-3. predictions.py is used for printing predictions to .csv format for entry in Kaggle-competition.
-4. bayesian_optimization.py has been used for tuning hyper-parameters of the Random Forest classifier using Bayesian Optimization strategy.
-5. knn_tuning.py uses k-fold cross-validation and tries to find the optimal number of neighbors in the K-Nearest-Neighbors model.
-6. xgb_tuning.py is used for tuning the XGBoost classifier.
+1. **dataLoader.py** which loads .csv data and uses scikit-learn (sklearn) for preprocessing. 
+2. **models.py** contains some non-tuned sklearn classification models, some tuned models and an XGBoost classifier.
+3. **predictions.py** is used for printing predictions to .csv format for entry in Kaggle-competition.
+4. **bayesian_optimization.py** has been used for tuning hyper-parameters of the Random Forest classifier using Bayesian Optimization strategy.
+5. **knn_tuning.py** uses k-fold cross-validation and tries to find the optimal number of neighbors in the K-Nearest-Neighbors model.
+6. **xgb_tuning.py** is used for tuning the XGBoost classifier.
 
 
 ### Models and their Accuracy
 Below is a short description of each model used and which accuracy they yielded.
 
+- Baseline (guessing): ~ 0.5 accuracy.
+
 - Random Forest, no tuning: 0.766 accuracy.  
 Random Forest, BO tuned: 0.778 accuracy. <- Best.
-
-- Baseline (guessing): ~0.5 accuracy.
 
 - Logistic Regression, no tuning: 0.758 accuracy.
 

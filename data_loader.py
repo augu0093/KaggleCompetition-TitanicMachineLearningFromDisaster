@@ -78,7 +78,7 @@ def dataLoader(test=False, optimize_set=False, ageNAN="median"):
 
 
 
-def csvSaver(predictions, type):
+def csv_saver(predictions, type):
 
     # Get passenger ID's from test set
     test_path = "./data/test.csv"
