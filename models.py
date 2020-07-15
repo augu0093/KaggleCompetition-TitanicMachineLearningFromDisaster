@@ -1,8 +1,7 @@
 """
-Building predictive model on regression principles.
+Building predictive model on classification principles.
 @AugustSemrau
 """
-import numpy as np
 
 from data_loader import dataLoader
 
